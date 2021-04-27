@@ -1,0 +1,115 @@
+program bubble
+type t = char ;
+t = char ;   { 类型重复说明 }
+t = integer ;  { 类型重复说明  }
+r = record integer r1,r2 ;char r3 ,r4 ; array [1..20] of integer r5 ; end ;
+var integer i , j , num ;
+        array [20..1] of integer d ;  { 数组下界大于上界 }
+        array [1..20] of integer a ;
+        array [1..20] of integer b ;
+        array [1..20] of char a ;   { 变量重复声明 }
+     integer i , j ,t ;   { 变量重复说明  }
+     char c ;
+     t  k1 ;
+     r k4 ;
+     t1 k2 ; { 类型未定义 }
+     i   k3 ;  { 使用非类型标识符定义 }
+procedure q ( integer i ) ; { 参数和变量冲突 }
+var integer i , j , k ;
+        integer t , temp ;
+        procedure r ( integer i2 ) ; { 参数和变量冲突 }
+             var integer i , j , k ;
+             integer t , temp ;
+             begin
+                      while i < num do 
+                          j := num - i + 1 ;
+                          k := 1 ;
+                          while k < j do
+                                if a[k+1] < a[k]
+                                then
+                                     i := a[k] ;
+                                     a[k] := a[k+1] ;
+                                     a[k+1] := t
+                                else temp := 0
+                                fi;
+                          k := k + 1 
+                          endwh ;
+                          i := i + 1 
+                       endwh 
+              end
+begin
+        while i < num do 
+                j := num - i + 1 ;
+                k := 1 ;
+                while k < j do
+                        if a[k+1] < a[k]
+                        then
+                                i := a[k] ;
+                                a[k] := a[k+1] ;
+                                a[k+1] := t
+                        else temp := 0
+                        fi;
+                k := k + 1 
+                endwh ;
+        i := i + 1 
+        endwh 
+end
+
+procedure w ( integer i1 ) ; { 参数和变量冲突 }
+var integer i , j , k ;
+        integer t , temp ;
+begin
+        while i < num do 
+                j := num - i + 1 ;
+                k := 1 ;
+                while k < j do
+                        if a[k+1] < a[k]
+                        then
+                                i := a[k] ;
+                                a[k] := a[k+1] ;
+                                a[k+1] := t
+                        else temp := 0
+                        fi;
+                k := k + 1 
+                endwh ;
+        i := i + 1 
+        endwh 
+end
+
+
+begin
+        ctr :=1 ; { 使用未声明变量 }
+        i := 1 ;
+        i := c ;  { 赋值不相容 }
+        a[0] := i ;
+        a[0] := c ; { 赋值不相容 }
+        i := a[0] + 1 ; 
+        i := a[0] + c ; {运算不相容 }
+        b[21] := 1 ; { 数组上越界 }
+        b[0] :=1 ;  { 数组下越界 }
+        b[c] := 1 ; { 下标不是整型 }
+        b := 2 ; { 数组变量当普通变量 }     
+        read( num ) ;
+        while i < ( num - 1 ) do
+                read( j ) ;
+                a[i] := j ;
+                i := i + 1
+        endwh ;
+        k4.r1 := 1;  
+        k4.r6 := 1;  {  不是成员变量 }
+        i.r1 := 1;  {  普通变量当记录体 }
+        i[1]:=1;    {  普通变量当数组 }
+        i := 1 ;
+        t := 1; {  给类型赋值 }
+        q := 1; {  给过程赋值 }
+        q( num ) ;
+        q( i , j) ; { 参数个数不匹配 }
+        q( c) ; { 参数类型不匹配 }
+        b(num) ; { 不是过程进行过程调用 }
+        i := 1 ;
+        while i < ( num + 1 ) do
+                write( a[i] ) ;
+                i := i + 1
+        endwh
+
+end
